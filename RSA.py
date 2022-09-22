@@ -1,6 +1,7 @@
 import rsa
 import math
 import pandas as pd
+import csv
 
 data = pd.read_csv('diabetes.csv')
 print(data)
