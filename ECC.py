@@ -23,10 +23,10 @@ print("Binary of the file:", data)
 encrypted_secp = encrypt(pubhex, data)
 print("Encrypted binary:", encrypted_secp)
 
-with open(newfilepath1, "wb") as EFile:
-    EFile.write(base64.b64decode(encrypted_secp))
+with open(newfilepath1, "rb") as EFile:
+    EFile.read(base64.b64decode(encrypted_secp))
 
 decrypted_secp = decrypt(privhex, encrypted_secp)
 print("\nDecrypted:", decrypted_secp)
-with open(newfilepath2, "wb") as DFile:
-    DFile.write(base64.b64decode(decrypted_secp))
+with open(newfilepath2, "rb") as DFile:
+    DFile.read(base64.b64decode(decrypted_secp))

@@ -1,7 +1,7 @@
+import csv
 import rsa
 import math
 import pandas as pd
-import csv
 
 data = pd.read_csv('diabetes.csv')
 print(data)
@@ -13,19 +13,20 @@ def generateKeys():
         p.write(publickey.save_pkcs1('PEM'))
     with open('privateKey.pem', 'wb') as p:
         p.write(privateKey.save_pkcs1('PEM'))
+
+
 print(generateKeys())
 
 
 def loadKeys():
     with open('publicKey.pem', 'rb') as p:
-        publicKey = rsa.PublicKey.save_pkcs1(p.read())
+        publicKey = rsa.PublicKey.load_pkcs1(p.read())
     with open('privateKey.pem', 'rb') as p:
-        privateKey = rsa.PrivateKey.save_pkcs1(p.read())
+        privateKey = rsa.PrivateKey.load_pkcs1(p.read())
     return privateKey, publicKey
-
 print(loadKeys())
 
-
+'''
 def encrypt(data, key):
     return rsa.encrypt(data.encode('ascii'), key)
 
@@ -67,3 +68,4 @@ if verify(text, signature, publicKey):
     print('Successfully verified signature')
 else:
     print('The message signature could not be verified')
+'''
